@@ -42,6 +42,15 @@ fs_permissions = [{ access = "read", path = "./"}]
 [lint]
 lint_on_build=false
 
+# Isolate these tests from the repository's legacy Solidity compiler versions.
+[profile.aave-v4-spoke]
+src = 'contracts/BIFI/strategies/Aave'
+test = 'forge/test/aave-v4-spoke'
+out = 'artifacts-forge/aave-v4-spoke'
+cache_path = 'cache-forge/aave-v4-spoke'
+solc_version = '0.8.26'
+evm_version = 'cancun'
+
 [rpc_endpoints]
 eth = "${ETH_RPC}"
 mainnet = "${ETH_RPC}"
