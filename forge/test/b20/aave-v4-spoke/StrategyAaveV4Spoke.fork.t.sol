@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.23;
 
 import "forge-std/Test.sol";
 import {
     StrategyAaveV4Spoke,
     BaseAllToNativeFactoryStrat
-} from "../../../contracts/BIFI/strategies/Aave/StrategyAaveV4Spoke.sol";
-import {StrategyFactory} from "../../../contracts/BIFI/infra/StrategyFactory.sol";
-import {BeefyVaultV7} from "../../../contracts/BIFI/vaults/BeefyVaultV7.sol";
-import {IStrategyV7} from "../../../contracts/BIFI/interfaces/beefy/IStrategyV7.sol";
-import {BeefyFeeConfigurator} from "../../../contracts/BIFI/infra/BeefyFeeConfigurator.sol";
+} from "../../../../contracts/BIFI/strategies/Aave/StrategyAaveV4Spoke.sol";
+import {StrategyFactory} from "../../../../contracts/BIFI/infra/StrategyFactory.sol";
+import {BeefyVaultV7} from "../../../../contracts/BIFI/vaults/BeefyVaultV7.sol";
+import {IStrategyV7} from "../../../../contracts/BIFI/interfaces/beefy/IStrategyV7.sol";
+import {BeefyFeeConfigurator} from "../../../../contracts/BIFI/infra/BeefyFeeConfigurator.sol";
 import "./Mocks.sol";
 
 interface IMag7Status {
@@ -20,8 +20,8 @@ interface IMag7Status {
 }
 
 /// @dev Real Base tokens, MAG7 and Hub; synthetic Merkl entitlement and funded deterministic swaps.
-/// Requires Base Foundry (tested with base/base-anvil v1.1.1) to execute B20 native precompiles.
-/// Run: FOUNDRY_PROFILE=aave-v4-spoke base-forge test --match-contract StrategyAaveV4SpokeForkTest -vv
+/// Requires Foundry >= 1.8.4 with hardfork base:Cobalt (set in the b20 profile) to execute B20 native precompiles.
+/// Run: FOUNDRY_PROFILE=b20 forge test --match-contract StrategyAaveV4SpokeForkTest -vv
 contract StrategyAaveV4SpokeForkTest is Test {
     address constant MAG7 = 0x17905Db0e4A3514467539956c084180616AE7B8D;
     address constant HUB = 0xa4d5947Eb727A052bae69C593FfC84247EC9864E;
